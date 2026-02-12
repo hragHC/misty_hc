@@ -6,22 +6,15 @@
     <title>A Gift for Misty</title>
     <style>
         body { 
-            background: #0d0d0d; 
-            color: #f4f4f4; 
-            font-family: 'Georgia', serif; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            text-align: center; 
+            background: #0d0d0d; color: #f4f4f4; font-family: 'Georgia', serif; 
+            display: flex; align-items: center; justify-content: center; 
+            min-height: 100vh; margin: 0; text-align: center;
         }
         #gate { display: block; padding: 20px; }
-        #content { display: none; padding: 40px 20px; max-width: 600px; animation: fadeIn 2s; }
+        #content { display: none; width: 100%; max-width: 600px; animation: fadeIn 1.5s; padding: 20px; }
         
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        h2 { font-weight: 300; letter-spacing: 2px; margin-bottom: 30px; }
         input { 
             padding: 15px; font-size: 1.5rem; border-radius: 8px; border: 1px solid #444; 
             background: #1a1a1a; color: #fff; width: 140px; text-align: center; outline: none;
@@ -29,36 +22,41 @@
         button { 
             display: block; margin: 20px auto; padding: 12px 30px; background: #c5a059; 
             border: none; cursor: pointer; color: #000; font-weight: bold; border-radius: 30px;
-            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
-        button:hover { background: #e2c27d; transform: scale(1.05); }
 
-        .lyrics { 
-            margin-top: 40px; line-height: 2; color: #d1d1d1; white-space: pre-wrap; 
-            font-style: italic; font-size: 1.1rem; border-top: 1px solid #333; padding-top: 30px;
+        .lyrics-box {
+            margin-top: 30px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            line-height: 1.8;
+            font-style: italic;
+            color: #d1d1d1;
+            white-space: pre-wrap;
+            border-top: 1px solid #333;
         }
+
         iframe { 
             margin-top: 20px; border: 2px solid #c5a059; border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 560px;
+            width: 100%; max-width: 500px; aspect-ratio: 16 / 9;
         }
-        #error { color: #ff5f5f; font-size: 0.9rem; margin-top: 15px; min-height: 1.2em; }
     </style>
 </head>
 <body>
 
     <div id="gate">
-        <h2>Enter the Date</h2>
+        <h2 style="font-weight: 300; letter-spacing: 1px;">Enter the Date</h2>
         <input type="password" id="pinInput" placeholder="PIN" maxlength="4">
-        <p id="error"></p>
+        <p id="error" style="color: #ff5f5f; font-size: 0.9rem;"></p>
         <button onclick="checkPin()">Unlock</button>
     </div>
 
     <div id="content">
-        <h1 style="color: #c5a059; letter-spacing: 3px;">FOR YOU, MISTY</h1>
+        <h1 style="color: #c5a059; letter-spacing: 3px; font-size: 1.4rem;">FOR YOU, MISTY</h1>
         
-        <iframe height="315" src="https://youtube.com/playlist?list=RDd4iGZ_jP-1U&playnext=1&si=n38NnWZVmlQ0nbGy" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         
-        <div class="lyrics">
+        <div class="lyrics-box">
 (Verse 1)
 We’re parked at the edge of Jal el Dib
 Dunkin’ in the cup holder, watching the lights bleed
@@ -81,18 +79,17 @@ Then you smile and you whisper, "But I said please..."
 And I’d walk a mile for that look in your eyes.
         </div>
         
-        <p style="margin-top: 50px; font-size: 0.8rem; color: #666; letter-spacing: 2px;">FOREVER YOURS</p>
+        <p style="margin-top: 40px; font-size: 0.7rem; color: #666; letter-spacing: 2px;">FOREVER YOURS</p>
     </div>
 
     <script>
         function checkPin() {
             const pin = document.getElementById("pinInput").value;
-            const correctPin = "0805"; 
-            if (pin === correctPin) {
+            if (pin === "0805") {
                 document.getElementById("gate").style.display = "none";
                 document.getElementById("content").style.display = "block";
             } else {
-                document.getElementById("error").innerText = "That's not the date, try again ❤️";
+                document.getElementById("error").innerText = "Try again ❤️";
                 document.getElementById("pinInput").value = "";
             }
         }

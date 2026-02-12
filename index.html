@@ -41,5 +41,100 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         h1, h2 { font-weight: 300; letter-spacing: 2px; }
-        h1 { color: #c5a059; font-size: 1.5rem;
+        h1 { color: #c5a059; font-size: 1.5rem; margin-bottom: 25px; }
+
+        input { 
+            padding: 15px; font-size: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); 
+            background: rgba(0,0,0,0.3); color: #fff; width: 140px; text-align: center; outline: none;
+            margin-bottom: 10px;
+        }
+        
+        button { 
+            display: block; margin: 20px auto; padding: 12px 35px; background: #c5a059; 
+            border: none; cursor: pointer; color: #000; font-weight: bold; border-radius: 30px;
+            transition: 0.3s; text-transform: uppercase;
+        }
+        button:hover { background: #e2c27d; transform: scale(1.05); }
+
+        .lyrics-box {
+            margin-top: 25px;
+            max-height: 250px;
+            overflow-y: auto;
+            line-height: 1.8;
+            font-style: italic;
+            color: #e0e0e0;
+            white-space: pre-wrap;
+            scrollbar-width: thin;
+            scrollbar-color: #c5a059 transparent;
+        }
+
+        iframe { 
+            border-radius: 12px; 
+            width: 100%; 
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+        }
+
+        #error { color: #ff8e8e; font-size: 0.85rem; height: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <div id="gate">
+            <h2>The Misty Sessions</h2>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 30px;">Enter the 4-digit PIN</p>
+            <input type="password" id="pinInput" placeholder="0000" maxlength="4">
+            <p id="error"></p>
+            <button onclick="checkPin()">Unlock Vault</button>
+        </div>
+
+        <div id="content">
+            <h1>FOR YOU, MISTY</h1>
             
+            <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            
+            <div class="lyrics-box">
+(Verse 1)
+We’re parked at the edge of Jal el Dib
+Dunkin’ in the cup holder, watching the lights bleed
+The city’s moving fast, but Carla, we’re sitting still
+Coffee after breakfast, looking out from the Maximus hill
+Just that quiet view, and a morning left to fill.
+
+(Chorus)
+And I hear the blinker clicking to the left and the right
+Guiding us home through the Beirut night
+From the salt on the rocks where the Jbeil waves break
+To the Zaytouna walks and the steps that we take
+It’s a simple life, Carla, it’s ours to keep.
+
+(Verse 2)
+You’re tucked on the sofa, looking at me
+"Can you get me some water?"—you’re as sweet as can be
+I start to say no, just to see your tease
+Then you smile and you whisper, "But I said please..."
+And I’d walk a mile for that look in your eyes.
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 0.7rem; color: #c5a059; opacity: 0.8; letter-spacing: 2px;">FOREVER YOURS</p>
+        </div>
+    </div>
+
+    <script>
+        function checkPin() {
+            const pin = document.getElementById("pinInput").value;
+            if (pin === "0805") {
+                document.getElementById("gate").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            } else {
+                document.getElementById("error").innerText = "That's not it, try again ❤️";
+                document.getElementById("pinInput").value = "";
+            }
+        }
+        document.getElementById("pinInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") { checkPin(); }
+        });
+    </script>
+</body>
+</html>

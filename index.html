@@ -6,96 +6,40 @@
     <title>A Gift for Misty</title>
     <style>
         body { 
-            background: #0d0d0d; color: #f4f4f4; font-family: 'Georgia', serif; 
-            display: flex; align-items: center; justify-content: center; 
-            min-height: 100vh; margin: 0; text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            font-family: 'Georgia', serif; 
+            /* Romantic, dark aesthetic background */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
         }
-        #gate { display: block; padding: 20px; }
-        #content { display: none; width: 100%; max-width: 600px; animation: fadeIn 1.5s; padding: 20px; }
+
+        /* THE GLASS CONTAINER */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(197, 160, 89, 0.3); /* Subtle gold border */
+            border-radius: 20px;
+            padding: 40px 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        #gate { display: block; }
+        #content { display: none; animation: fadeIn 2s; }
         
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        input { 
-            padding: 15px; font-size: 1.5rem; border-radius: 8px; border: 1px solid #444; 
-            background: #1a1a1a; color: #fff; width: 140px; text-align: center; outline: none;
-        }
-        button { 
-            display: block; margin: 20px auto; padding: 12px 30px; background: #c5a059; 
-            border: none; cursor: pointer; color: #000; font-weight: bold; border-radius: 30px;
-        }
-
-        .lyrics-box {
-            margin-top: 30px;
-            padding: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-            line-height: 1.8;
-            font-style: italic;
-            color: #d1d1d1;
-            white-space: pre-wrap;
-            border-top: 1px solid #333;
-        }
-
-        iframe { 
-            margin-top: 20px; border: 2px solid #c5a059; border-radius: 15px; 
-            width: 100%; max-width: 500px; aspect-ratio: 16 / 9;
-        }
-    </style>
-</head>
-<body>
-
-    <div id="gate">
-        <h2 style="font-weight: 300; letter-spacing: 1px;">Enter the Date</h2>
-        <input type="password" id="pinInput" placeholder="PIN" maxlength="4">
-        <p id="error" style="color: #ff5f5f; font-size: 0.9rem;"></p>
-        <button onclick="checkPin()">Unlock</button>
-    </div>
-
-    <div id="content">
-        <h1 style="color: #c5a059; letter-spacing: 3px; font-size: 1.4rem;">FOR YOU, MISTY</h1>
-        
-        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        
-        <div class="lyrics-box">
-(Verse 1)
-We’re parked at the edge of Jal el Dib
-Dunkin’ in the cup holder, watching the lights bleed
-The city’s moving fast, but Carla, we’re sitting still
-Coffee after breakfast, looking out from the Maximus hill
-Just that quiet view, and a morning left to fill.
-
-(Chorus)
-And I hear the blinker clicking to the left and the right
-Guiding us home through the Beirut night
-From the salt on the rocks where the Jbeil waves break
-To the Zaytouna walks and the steps that we take
-It’s a simple life, Carla, it’s ours to keep.
-
-(Verse 2)
-You’re tucked on the sofa, looking at me
-"Can you get me some water?"—you’re as sweet as can be
-I start to say no, just to see your tease
-Then you smile and you whisper, "But I said please..."
-And I’d walk a mile for that look in your eyes.
-        </div>
-        
-        <p style="margin-top: 40px; font-size: 0.7rem; color: #666; letter-spacing: 2px;">FOREVER YOURS</p>
-    </div>
-
-    <script>
-        function checkPin() {
-            const pin = document.getElementById("pinInput").value;
-            if (pin === "0805") {
-                document.getElementById("gate").style.display = "none";
-                document.getElementById("content").style.display = "block";
-            } else {
-                document.getElementById("error").innerText = "Try again ❤️";
-                document.getElementById("pinInput").value = "";
-            }
-        }
-        document.getElementById("pinInput").addEventListener("keyup", function(event) {
-            if (event.key === "Enter") { checkPin(); }
-        });
-    </script>
-</body>
-</html>
+        h1, h2 { font-weight: 300; letter-spacing: 2px; }
+        h1 { color: #c5a059; font-size: 1.5rem;
+            

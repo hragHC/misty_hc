@@ -8,7 +8,7 @@
         body { 
             background: #0d0d0d; 
             color: #f4f4f4; 
-            font-family: 'Times New Roman', serif; 
+            font-family: 'Georgia', serif; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -17,78 +17,71 @@
             text-align: center; 
         }
         #gate { display: block; padding: 20px; }
-        #content { display: none; padding: 40px 20px; max-width: 600px; }
+        #content { display: none; padding: 40px 20px; max-width: 600px; animation: fadeIn 2s; }
         
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         h2 { font-weight: 300; letter-spacing: 2px; margin-bottom: 30px; }
-        
         input { 
-            padding: 15px; 
-            font-size: 1.5rem; 
-            border-radius: 8px; 
-            border: 1px solid #444; 
-            background: #1a1a1a;
-            color: #fff;
-            width: 140px; 
-            text-align: center; 
-            outline: none;
+            padding: 15px; font-size: 1.5rem; border-radius: 8px; border: 1px solid #444; 
+            background: #1a1a1a; color: #fff; width: 140px; text-align: center; outline: none;
         }
-        
         button { 
-            display: block;
-            margin: 20px auto;
-            padding: 12px 30px; 
-            background: #c5a059; /* Elegant Gold */
-            border: none; 
-            cursor: pointer; 
-            color: #000; 
-            font-weight: bold; 
-            border-radius: 30px;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: block; margin: 20px auto; padding: 12px 30px; background: #c5a059; 
+            border: none; cursor: pointer; color: #000; font-weight: bold; border-radius: 30px;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
         button:hover { background: #e2c27d; transform: scale(1.05); }
 
         .lyrics { 
-            margin-top: 40px; 
-            line-height: 1.8; 
-            color: #d1d1d1; 
-            white-space: pre-wrap; 
-            font-style: italic; 
-            font-size: 1.1rem;
-            border-top: 1px solid #333;
-            padding-top: 30px;
+            margin-top: 40px; line-height: 2; color: #d1d1d1; white-space: pre-wrap; 
+            font-style: italic; font-size: 1.1rem; border-top: 1px solid #333; padding-top: 30px;
         }
-
         iframe { 
-            margin-top: 20px; 
-            border: 2px solid #c5a059; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 20px; border: 2px solid #c5a059; border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 560px;
         }
-
         #error { color: #ff5f5f; font-size: 0.9rem; margin-top: 15px; min-height: 1.2em; }
     </style>
 </head>
 <body>
 
     <div id="gate">
-        <h2>Unlock Your Gift</h2>
+        <h2>Enter the Date</h2>
         <input type="password" id="pinInput" placeholder="PIN" maxlength="4">
         <p id="error"></p>
-        <button onclick="checkPin()">Enter</button>
+        <button onclick="checkPin()">Unlock</button>
     </div>
 
     <div id="content">
-        <h1 style="color: #c5a059;">For You, Misty</h1>
+        <h1 style="color: #c5a059; letter-spacing: 3px;">FOR YOU, MISTY</h1>
         
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe height="315" src="https://youtube.com/playlist?list=RDd4iGZ_jP-1U&playnext=1&si=n38NnWZVmlQ0nbGy" allowfullscreen></iframe>
         
         <div class="lyrics">
-[PASTE YOUR FULL LYRICS HERE]
+(Verse 1)
+We’re parked at the edge of Jal el Dib
+Dunkin’ in the cup holder, watching the lights bleed
+The city’s moving fast, but Carla, we’re sitting still
+Coffee after breakfast, looking out from the Maximus hill
+Just that quiet view, and a morning left to fill.
+
+(Chorus)
+And I hear the blinker clicking to the left and the right
+Guiding us home through the Beirut night
+From the salt on the rocks where the Jbeil waves break
+To the Zaytouna walks and the steps that we take
+It’s a simple life, Carla, it’s ours to keep.
+
+(Verse 2)
+You’re tucked on the sofa, looking at me
+"Can you get me some water?"—you’re as sweet as can be
+I start to say no, just to see your tease
+Then you smile and you whisper, "But I said please..."
+And I’d walk a mile for that look in your eyes.
         </div>
         
-        <p style="margin-top: 50px; font-size: 0.8rem; color: #666;">Forever Yours.</p>
+        <p style="margin-top: 50px; font-size: 0.8rem; color: #666; letter-spacing: 2px;">FOREVER YOURS</p>
     </div>
 
     <script>
@@ -103,12 +96,8 @@
                 document.getElementById("pinInput").value = "";
             }
         }
-        
-        // Allow "Enter" key to submit
         document.getElementById("pinInput").addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-                checkPin();
-            }
+            if (event.key === "Enter") { checkPin(); }
         });
     </script>
 </body>

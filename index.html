@@ -6,25 +6,24 @@
     <title>A Gift for Misty</title>
     <style>
         body { 
-            margin: 0; padding: 20px; /* Added padding to ensure glow is visible */
-            display: flex; align-items: center; justify-content: center; 
+            margin: 0; padding: 20px; display: flex; align-items: center; justify-content: center; 
             min-height: 100vh; font-family: 'Georgia', serif; 
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=2000&auto=format&fit=crop');
+            /* THE NEW BACKGROUND IMAGE */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1511149757327-0466436f9cc0?q=80&w=2000&auto=format&fit=crop'), #000;
             background-size: cover; background-position: center; background-attachment: fixed;
-            color: #fff; box-sizing: border-box;
+            color: #fff; box-sizing: border-box; overflow-x: hidden;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            /* Glowing Gold Border */
-            border: 1px solid rgba(197, 160, 89, 0.5);
+            border: 1px solid rgba(197, 160, 89, 0.4);
             border-radius: 25px;
             padding: 30px 20px;
             width: 100%;
-            max-width: 420px; /* Narrower to ensure glow shows on all screens */
-            /* Enhanced Glow/Shadow Effect */
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2), 0 20px 50px rgba(0,0,0,0.7);
+            max-width: 420px;
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.15), 0 20px 50px rgba(0,0,0,0.8);
             text-align: center;
             box-sizing: border-box;
         }
@@ -41,33 +40,30 @@
         #content { display: none; animation: fadeIn 1.5s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        h1 { color: #c5a059; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 20px; text-shadow: 0 0 10px rgba(197, 160, 89, 0.4); }
+        h1 { color: #c5a059; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 20px; }
         h2 { font-weight: 300; letter-spacing: 1px; margin-top: 0; }
 
         input { 
-            padding: 15px; font-size: 1.8rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3); 
+            padding: 15px; font-size: 1.8rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); 
             background: rgba(0,0,0,0.5); color: #fff; width: 160px; text-align: center; outline: none;
-            letter-spacing: 10px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            letter-spacing: 10px;
         }
         
         button { 
             display: block; margin: 20px auto; padding: 12px 40px; background: #c5a059; 
             border: none; cursor: pointer; color: #000; font-weight: bold; border-radius: 30px;
-            text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
         .lyrics-box {
             margin-top: 20px; max-height: 220px; overflow-y: auto;
             line-height: 1.8; font-style: italic; color: #e0e0e0; white-space: pre-wrap;
             border-top: 1px solid rgba(197, 160, 89, 0.3); padding-top: 15px;
-            scrollbar-width: none; /* Hides scrollbar on Firefox */
         }
-        .lyrics-box::-webkit-scrollbar { display: none; } /* Hides scrollbar on Chrome/Safari */
 
         .video-container {
             position: relative; width: 100%; aspect-ratio: 16/9; 
-            border-radius: 12px; overflow: hidden; border: 1px solid rgba(197, 160, 89, 0.4);
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            border-radius: 12px; overflow: hidden; border: 1px solid rgba(197, 160, 89, 0.3);
         }
         iframe { width: 100%; height: 100%; border: none; }
 
@@ -79,7 +75,7 @@
     <div class="glass-card">
         <div id="gate">
             <h2>The Misty Sessions</h2>
-            <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 20px;">Please enter your 4-digit PIN</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 20px;">Enter your 4-digit PIN</p>
             <input type="password" id="pinInput" placeholder="••••" maxlength="4" inputmode="numeric">
             <p id="error"></p>
             <button onclick="checkPin()">Unlock Vault</button>
